@@ -407,14 +407,15 @@ st.markdown("""
     
     /* Metrics display */
     .stMetric {
-        font-size: 11px !important;
+        font-size: 14px !important;
         margin-bottom: 0.1rem !important;
     }
     .stMetric > div > div {
-        font-size: 11px !important;
+        font-size: 14px !important;
     }
     .stMetric > div > div > div {
-        font-size: 10px !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
     }
     
     /* Caption styling */
@@ -479,7 +480,7 @@ st.markdown("""
     }
     
     [data-testid="metric-container"] > div {
-        font-size: 11px !important;
+        font-size: 14px !important;
     }
     
     /* Divider spacing */
