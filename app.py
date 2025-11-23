@@ -838,7 +838,6 @@ with col_eval:
             psnr_channels = []
             mse_channels = []
             uaci_channels = []
-            npcr_channels = []
             entropy_cover_channels = []
             entropy_dec_channels = []
             
@@ -846,14 +845,12 @@ with col_eval:
                 psnr_val = compute_psnr(cover_rgb[:, :, channel], wm_rgb[:, :, channel])
                 mse_val = compute_mse(cover_rgb[:, :, channel], wm_rgb[:, :, channel])
                 uaci_val = compute_uaci(cover_rgb[:, :, channel], wm_rgb[:, :, channel])
-                npcr_val = compute_npcr(cover_rgb[:, :, channel], wm_rgb[:, :, channel])
                 entropy_cov = compute_entropy(cover_rgb[:, :, channel])
                 entropy_wm = compute_entropy(wm_rgb[:, :, channel])
                 
                 psnr_channels.append(psnr_val)
                 mse_channels.append(mse_val)
                 uaci_channels.append(uaci_val)
-                npcr_channels.append(npcr_val)
                 entropy_cover_channels.append(entropy_cov)
                 entropy_dec_channels.append(entropy_wm)
             
@@ -861,7 +858,6 @@ with col_eval:
             avg_psnr = np.mean(psnr_channels)
             avg_mse = np.mean(mse_channels)
             avg_uaci = np.mean(uaci_channels)
-            avg_npcr = np.mean(npcr_channels)
             avg_entropy_cover = np.mean(entropy_cover_channels)
             avg_entropy_dec = np.mean(entropy_dec_channels)
             
@@ -872,7 +868,6 @@ with col_eval:
                 st.metric("MSE", f"{avg_mse:.1f}", help="Lower better")
                 st.metric("UACI", f"{avg_uaci:.2f}%", help="Change intensity")
             with col_met2:
-                st.metric("NPCR", f"{avg_npcr:.2f}%", help="Pixel change rate")
                 st.metric("ENT-C", f"{avg_entropy_cover:.2f}", help="Cover entropy")
                 st.metric("ENT-D", f"{avg_entropy_dec:.2f}", help="Dec entropy")
         
